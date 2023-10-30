@@ -1,0 +1,54 @@
+@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  section {
+    @apply mt-6 mb-0;
+  }
+}
+
+@layer uilities {
+  .center-body {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .bgImage {
+    clip-path: polygon(55% 0, 100% 0%, 100% 100%, 0% 100%);
+  }
+}
+
+@screen xl {
+  .layout {
+    grid-template-columns: 371px 1fr;
+  }
+  .content {
+    max-width: calc(100vw - 371px);
+  }
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  /* border: 1px solid red; */
+}
+
+.nav-icon svg path {
+  fill: #fdb815;
+}
+
+.nav-icon::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 5px;
+  height: 100%;
+  background: #fdb815;
+}
