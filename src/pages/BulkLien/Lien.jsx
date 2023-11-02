@@ -2,7 +2,7 @@ import React from 'react'
 
 const Lien = () => {
   return (
-    <div className='bg-yellow-200'>My Lien</div>
+    <div className='mlf-[90rem] bg-yellow-200'>My Lien</div>
   )
 }
 

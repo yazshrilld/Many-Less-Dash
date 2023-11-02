@@ -1,23 +1,26 @@
 import { ReactComponent as DashboardIcon } from "../svg/Dashboard.svg";
 import { ReactComponent as BulkLienIcon } from "../svg/Bulk-liens.svg";
 import { ReactComponent as BulkUnLienIcon } from "../svg/Bulk-unliens.svg";
-
+import { ReactComponent as ApprovedIcon } from "../svg/approved.svg";
+import { ReactComponent as PendingIcon } from "../svg/pending.svg";
+import { ReactComponent as DeclinedIcon } from "../svg/declined.svg";
+import { ReactComponent as FailedIcon } from "../svg/failed.svg";
 export const navigation = (role) => [
   {
     name: "Dashboard",
     icon: () => <DashboardIcon />,
-    href: "",
+    href: "/app/dashboard",
     role: true,
   },
   {
     name: "Bulk Lien",
     icon: () => <BulkLienIcon />,
-    href: "",
+    href: "/app/bulk-lien",
     role: true,
     dropdown: [
       {
         label: "Upload Lien",
-        href: "",
+        href: "/app/bulk-lien/upload-lien",
       },
       {
         label: "ApprovedLien",
@@ -40,7 +43,7 @@ export const navigation = (role) => [
   {
     name: "Bulk UnLien",
     icon: () => <BulkUnLienIcon />,
-    href: "",
+    href: "/app/bulk-unlien",
     role: true,
     dropdown: [
       {
@@ -64,5 +67,28 @@ export const navigation = (role) => [
         href: "",
       },
     ],
+  },
+];
+
+export const statistics = [
+  {
+    name: "Approved Lien",
+    count: 2,
+    icon: <ApprovedIcon classname="bg-yellow-500" />,
+  },
+  {
+    name: "Pending Lien",
+    count: 2,
+    icon: <PendingIcon />,
+  },
+  {
+    name: "Declined Lien",
+    count: 2,
+    icon: <DeclinedIcon />,
+  },
+  {
+    name: "Failed Lien",
+    count: 2,
+    icon: <FailedIcon />,
   },
 ];

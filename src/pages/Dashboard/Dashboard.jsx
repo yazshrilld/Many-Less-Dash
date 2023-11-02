@@ -1,9 +1,13 @@
-import React from 'react'
-
+import Statistics from "../../components/Statistics/Statistics";
 const Dashboard = () => {
   return (
-    <div className='bg-green-200'>My Dashboard</div>
-  )
-}
+    <>
+      <div className="text-black space-y-10">
+        <div>My Dashboard</div>
+        <Statistics />
+      </div>
+    </>
+  );
+};
 
-export default Dashboard
+export default Dashboard;

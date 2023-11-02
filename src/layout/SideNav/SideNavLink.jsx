@@ -1,17 +1,32 @@
+import { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 
 const navClass = `flex items-center group relative h-[71px] text-font space-x-4 text-[20px] font-medium`;
 
-const SideNavLink = ({ title, icon, href, dropdown }) => {
+const SideNavLink = ({ title, icon, href, dropdown, indexN }) => {
+  const [icons, setIcons] = useState(null);
+
+  const activeIcon = (indexN) => {
+    setIcons(indexN);
+  };
+
+  console.log("Icons:", icons);
+
   return (
     <>
       <NavLink
         to={href}
         className={({ isActive }) =>
-          isActive ? `${navClass} nav-icon bg-yellow-200` : navClass
+          isActive
+            ? `${navClass} nav-icon bg-white rounded-lg shadow-[0px_4px_17px_4px_rgba(0,0,0,0.10)]`
+            : `${navClass} hover:bg-slate-50`
         }
       >
-        <span className="ml-6">{icon}</span>
+        <span className="ml-6 bg-black p-[10px] rounded-lg active-left">
+          {icon}
+        </span>
+        {/* <span className="ml-6 bg-black p-[10px] rounded-lg">{icon}</span> */}
+        {/* <span className={({isActive}) => isActive ? `bg-black` : `bg-green-300`}>{icon}</span> */}
         <span className="font-medium text-base">{title}</span>
 
         {dropdown?.length > 0 && (
