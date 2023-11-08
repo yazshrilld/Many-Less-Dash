@@ -10,8 +10,6 @@ const SideNavLink = ({ title, icon, href, dropdown, indexN }) => {
     setIcons(indexN);
   };
 
-  console.log("Icons:", icons);
-
   return (
     <>
       <NavLink
@@ -30,12 +28,12 @@ const SideNavLink = ({ title, icon, href, dropdown, indexN }) => {
         <span className="font-medium text-base">{title}</span>
 
         {dropdown?.length > 0 && (
-          <div className="absolute z-[5] hidden group-hover:block w-[325px] text-base pb-[0px] rounded-[5px] shadow-[0px_4px_17px_4px_rgba(0,0,0,0.10)] left-[100px] bg-white top-[68px]">
+          <div className="absolute z-[5] hidden group-hover:block w-[280px] text-base pb-[0px] rounded-[5px] shadow-[0px_4px_17px_4px_rgba(0,0,0,0.10)] left-[100px] bg-white top-[68px]">
             {dropdown?.map(({ label, href }, idx) => (
               <Link
                 key={idx}
                 to={href}
-                className="px-[30px] block py-[15px] hover:bg-slate-50"
+                className="px-[30px] block py-[15px] hover:border hover:border-b-yellow-500/20 border-t-transparent border-x-transparent"
               >
                 {label}
               </Link>

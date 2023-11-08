@@ -8,7 +8,7 @@ const AppLayout = () => {
 
   return (
     <>
-      <div className="overflow-hidden layout w-full h-screen grid bg-[#ffffffce]">
+      <div className="overflow-hidden layout w-full h-screen grid bg-[#ffffffce] font-jakarta">
         <SideNav />
         <div className="content overflow-y-auto overflow-x-hidden h-screen bg-[#F4F4F4]">
           <AccountMenu />
