@@ -6,15 +6,19 @@ import TableHead from "@mui/material/TableHead";
 import TablePagination from "@mui/material/TablePagination";
 import TableRow from "@mui/material/TableRow";
 import Checkbox from "@mui/material/Checkbox";
+import { DUMMY_DATA_APPROVED } from "../assets/data/data";
+import { ColumnHeaders } from "../assets/data/data";
+import { useState } from "react";
+import BaseButton from "./Button/BaseButton";
 
-const BaseTable = ({
-  rows,
-  columns,
-  page,
-  setPage,
-  rowsPerPage,
-  setRowsPerPage,
-}) => {
+const BaseDashTable = () => {
+  const data = DUMMY_DATA_APPROVED;
+  const columnHeaders = ColumnHeaders;
+  const rowsData = [...Array(25).keys()].map(() => data);
+
+  const [page, setPage] = useState(0);
+  const [rowsPerPage, setRowsPerPage] = useState(10);
+
   const handlePageChange = (event, newPage) => {
     setPage(newPage);
   };
@@ -30,7 +34,7 @@ const BaseTable = ({
         <Table stickyHeader aria-label="sticky table" stripe="even">
           <TableHead>
             <TableRow>
-              {columns?.map(({ label, minWidth }, idx) => (
+              {columnHeaders.map(({ label, minWidth }, idx) => (
                 <TableCell
                   key={idx}
                   sx={{
@@ -65,22 +69,23 @@ const BaseTable = ({
             </TableRow>
           </TableHead>
           <TableBody>
-            {rows
+            {rowsData
               ?.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
               .map((row, indx) => {
                 return (
-                  <TableRow
-                    hover
+                  <TableRow hover
                     tabIndex={-1}
                     key={indx}
                     style={{ fontSize: "0.8rem" }}
                   >
-                    {columns?.map((cols, idx) => {
-                      const seenas = cols;
-                      const check = row[idx]
+                    {columnHeaders.map((cols) => {
+                    //   console.log(row)
+                      const seenas = cols.id;
+                    //   console.log({seenas});
+                      const value = row[seenas];
                       return (
                         <TableCell key={cols.ld} style={{ fontSize: "0.8rem" }}>
-                          <span>{check}</span>
+                          <span>{value}</span>
                         </TableCell>
                       );
                     })}
@@ -108,13 +113,14 @@ const BaseTable = ({
         component="div"
         page={page}
         rowsPerPage={rowsPerPage}
-        count={rows?.length}
+        count={rowsData.length}
         rowsPerPageOptions={[10, 25, 100]}
         onPageChange={handlePageChange}
         onRowsPerPageChange={handleChangeRowsPerPage}
       ></TablePagination>
+
     </div>
   );
 };
 
-export default BaseTable;
+export default BaseDashTable;

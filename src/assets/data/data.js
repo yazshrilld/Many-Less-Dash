@@ -25,19 +25,19 @@ export const navigation = (role) => [
       },
       {
         label: "ApprovedLien",
-        href: "",
+        href: "/app/bulk-lien/approved-lien",
       },
       {
         label: "Pending Lien",
-        href: "",
+        href: "/app/bulk-lien/approved-lien",
       },
       {
         label: "Declined Lien",
-        href: "",
+        href: "/app/bulk-lien/approved-lien",
       },
       {
         label: "Failed Lien",
-        href: "",
+        href: "/app/bulk-lien/approved-lien",
       },
     ],
   },
@@ -49,23 +49,23 @@ export const navigation = (role) => [
     dropdown: [
       {
         label: "Upload UnLien",
-        href: "",
+        href: "/app/bulk-unlien",
       },
       {
         label: "Approved UnLien",
-        href: "",
+        href: "/app/bulk-unlien/approved-lien",
       },
       {
         label: "Pending UnLien",
-        href: "",
+        href: "/app/bulk-unlien/pending-lien",
       },
       {
         label: "Declined UnLien",
-        href: "",
+        href: "/app/bulk-unlien/declined-lien",
       },
       {
         label: "Failed UnLien",
-        href: "",
+        href: "/app/bulk-unlien/failed-lien",
       },
     ],
   },
@@ -94,13 +94,43 @@ export const statistics = [
   },
 ];
 
-export const DUMMY_DATA = {
+export const DUMMY_DATA_APPROVED = {
   referenceNumber: 1100924,
   customerName: "Musa Yazid",
   accountNumber: 3291233455,
   lienAmount: 800,
   debitAmount: 4,
-  status: "Approved",
+  status: "APPROVED",
+  code: 11,
+};
+
+export const DUMMY_DATA_DECLINED = {
+  referenceNumber: 1100924,
+  customerName: "Musa Yazid",
+  accountNumber: 3291233455,
+  lienAmount: 800,
+  debitAmount: 4,
+  status: "APPROVED",
+  code: 11,
+};
+
+export const DUMMY_DATA_PENDING = {
+  referenceNumber: 1100924,
+  customerName: "Musa Yazid",
+  accountNumber: 3291233455,
+  lienAmount: 800,
+  debitAmount: 4,
+  status: "APPROVED",
+  code: 11,
+};
+
+export const DUMMY_DATA_FAILED = {
+  referenceNumber: 1100924,
+  customerName: "Musa Yazid",
+  accountNumber: 3291233455,
+  lienAmount: 800,
+  debitAmount: 4,
+  status: "APPROVED",
   code: 11,
 };
 
@@ -152,6 +182,17 @@ export const ColumnHeaders = [
     id: "status",
     label: "Status",
     minWidth: 50,
+    format: (val) => (
+      <p
+        className={`${
+          val.toUpperCase() === "APPROVED"
+            ? "text-[#009E19] bg-green-200 p-1 rounded-[60px]"
+            : "text-[#000000]"
+        } capitalize`}
+      >
+        {val.toLowerCase()}
+      </p>
+    ),
   },
   {
     id: "code",
@@ -167,13 +208,18 @@ export const EXCEL_DUMMY_DATA = {
   LIEN_AMOUNT: 800,
   DEBIT_AMOUNT: 4,
   CHARGES: 11,
-}
+};
 
 export const ExcelColumns = [
   { id: "REFERENCE", label: "Reference Number", minWidth: 90 },
   { id: "NAME", label: "Customer Name", minWidth: 100 },
   { id: "ACCOUNT", label: "Account Number", minWidth: 90 },
-  { id: "LIEN_AMOUNT", label: "Lien Amount", minWidth: 90, },
-  { id: "DEBIT_AMOUNT", label: "Debit Amount", minWidth: 90, },
-  { id: "CHARGES", label: "Charges", minWidth: 50, },
+  { id: "LIEN_AMOUNT", label: "Lien Amount", minWidth: 90 },
+  { id: "DEBIT_AMOUNT", label: "Debit Amount", minWidth: 90 },
+  {
+    id: "CHARGES",
+    label: "Charges",
+    minWidth: 50,
+    format: (val) => <p>{val < 300 ? `text-red-300` : `text-green-300`}</p>,
+  },
 ];

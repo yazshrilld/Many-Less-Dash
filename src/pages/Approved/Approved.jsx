@@ -1,14 +1,14 @@
 import BaseDashTable from "../../components/BaseDashTable";
 
-const Declined = () => {
+const Approved = () => {
   return (
     <>
       <div className="text-black space-y-10">
-        <div>My Declined</div>
+        <div>My Approved</div>
         <BaseDashTable />
       </div>
     </>
   );
 };
 
-export default Declined;
+export default Approved;

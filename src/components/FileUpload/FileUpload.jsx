@@ -5,32 +5,43 @@ import { useState } from "react";
 import axios from "axios";
 import BaseTable from "../BaseTable";
 import { ExcelColumns, EXCEL_DUMMY_DATA } from "../../assets/data/data";
-import { OutTable, ExcelRenderer } from "react-excel-renderer" 
+import { OutTable, ExcelRenderer } from "react-excel-renderer";
 
 const FileUpload = () => {
   const [files, setFiles] = useState([]);
   const [uploadedFiles, setUploadedFiles] = useState([]);
   const [progress, setProgress] = useState(false);
-  const [rowsData, setRowsData] = useState([])
-  const [colsData, setColsData] = useState([])
-  
+  const [rowsData, setRowsData] = useState([]);
+  const [colsData, setColsData] = useState([]);
+
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(10);
   const rows = [...Array(2).keys()].map(() => EXCEL_DUMMY_DATA);
-
-
 
   const handleFIleUpload = (event) => {
     const file = event.target.files[0];
     if (!file) return;
     ExcelRenderer(file, (err, response) => {
-      if(err) {
-        console.log(err)
-      } else {
-        setColsData(response.rows[0])
-        setRowsData(response.rows.slice(1))
+      if (err) {
+        console.log(err);
+      } 
+      else {
+        setColsData(response.rows[0]);
+        setRowsData(response.rows.slice(1));
+        console.log({ response });
+        const [headers, ...rest] = response.rows;
+        const transform = rest.map((arr) => {
+          const obj = {};
+          arr.forEach((itm, idx) => {
+            obj[headers[idx].toLowerCase()] = itm;
+          });
+
+          return obj;
+        });
+
+        console.log({ transform });
       }
-    })
+    });
     const fileName =
       file.name.length > 12
         ? `${file.name.substring(0, 12)}... .${file.name.split(".")[1]}`
@@ -58,7 +69,9 @@ const FileUpload = () => {
           });
           if (loaded === total) {
             const fileSize =
-              total < 1024 ? `${total} KB` : `${(loaded / (1024 * 1024)).toFixed(2)} MB`;
+              total < 1024
+                ? `${total} KB`
+                : `${(loaded / (1024 * 1024)).toFixed(2)} MB`;
             setUploadedFiles([
               ...uploadedFiles,
               {
@@ -74,8 +87,8 @@ const FileUpload = () => {
       .catch(console.error);
   };
 
-  // console.log({rowsData})
-  console.log({colsData})
+  console.log({ rowsData });
+  // console.log({colsData})
   // const viewHeader = header.map((data, idx) => (
   //   console.log(data)
   // ))
@@ -155,7 +168,7 @@ const FileUpload = () => {
 
         <BaseTable
           // rows={rows || []}
-          rows={rowsData|| []}
+          rows={rowsData || []}
           columns={ExcelColumns}
           page={page}
           setPage={setPage}
