@@ -1,10 +1,10 @@
-import BaseDashTable from "../../components/BaseDashTable";
+import BaseTable from "../../components/BaseTable";
 
 const Pending = () => {
   return (
     <div className="text-black space-y-10">
       <div>My Pending</div>
-      <BaseDashTable />
+      <BaseTable />
     </div>
   );
 };

@@ -95,50 +95,50 @@ export const statistics = [
 ];
 
 export const DUMMY_DATA_APPROVED = {
-  referenceNumber: 1100924,
-  customerName: "Musa Yazid",
-  accountNumber: 3291233455,
-  lienAmount: 800,
-  debitAmount: 4,
+  reference: 1100924,
+  name: "Musa Yazid",
+  account: 3291233455,
+  lien_amount: 800,
+  debit_amount: 4,
   status: "APPROVED",
   code: 11,
 };
 
 export const DUMMY_DATA_DECLINED = {
-  referenceNumber: 1100924,
-  customerName: "Musa Yazid",
-  accountNumber: 3291233455,
-  lienAmount: 800,
-  debitAmount: 4,
-  status: "APPROVED",
+  reference: 1100924,
+  name: "Musa Yazid",
+  account: 3291233455,
+  lien_amount: 800,
+  debit_amount: 4,
+  status: "DECLINED",
   code: 11,
 };
 
 export const DUMMY_DATA_PENDING = {
-  referenceNumber: 1100924,
-  customerName: "Musa Yazid",
-  accountNumber: 3291233455,
-  lienAmount: 800,
-  debitAmount: 4,
-  status: "APPROVED",
+  reference: 1100924,
+  name: "Musa Yazid",
+  account: 3291233455,
+  lien_amount: 800,
+  debit_amount: 4,
+  status: "PENDING",
   code: 11,
 };
 
 export const DUMMY_DATA_FAILED = {
-  referenceNumber: 1100924,
-  customerName: "Musa Yazid",
-  accountNumber: 3291233455,
-  lienAmount: 800,
-  debitAmount: 4,
-  status: "APPROVED",
+  reference: 1100924,
+  name: "Musa Yazid",
+  account: 3291233455,
+  lien_amount: 800,
+  debit_amount: 4,
+  status: "FAILED",
   code: 11,
 };
 
 export const ColumnHeaders = [
-  { id: "referenceNumber", label: "Reference Number", minWidth: 90 },
-  { id: "customerName", label: "Customer Name", minWidth: 100 },
+  { id: "reference", label: "Reference Number", minWidth: 90 },
+  { id: "name", label: "Customer Name", minWidth: 100 },
   {
-    id: "accountNumber",
+    id: "account",
     label: "Account Number",
     minWidth: 90,
     // format: (val) => (
@@ -146,7 +146,7 @@ export const ColumnHeaders = [
     // ),
   },
   {
-    id: "lienAmount",
+    id: "lien_amount",
     label: "Lien Amount",
     minWidth: 90,
     // format: (val) => (
@@ -174,7 +174,7 @@ export const ColumnHeaders = [
     // ),
   },
   {
-    id: "debitAmount",
+    id: "debit_amount",
     label: "Debit Amount",
     minWidth: 90,
   },
@@ -211,6 +211,20 @@ export const EXCEL_DUMMY_DATA = {
 };
 
 export const ExcelColumns = [
+  { id: "REFERENCE", label: "Reference Number", minWidth: 90 },
+  { id: "NAME", label: "Customer Name", minWidth: 100 },
+  { id: "ACCOUNT", label: "Account Number", minWidth: 90 },
+  { id: "LIEN_AMOUNT", label: "Lien Amount", minWidth: 90 },
+  { id: "DEBIT_AMOUNT", label: "Debit Amount", minWidth: 90 },
+  {
+    id: "CHARGES",
+    label: "Charges",
+    minWidth: 50,
+    format: (val) => <p>{val < 300 ? `text-red-300` : `text-green-300`}</p>,
+  },
+];
+
+export const ExcelColsHeaders = [
   { id: "REFERENCE", label: "Reference Number", minWidth: 90 },
   { id: "NAME", label: "Customer Name", minWidth: 100 },
   { id: "ACCOUNT", label: "Account Number", minWidth: 90 },

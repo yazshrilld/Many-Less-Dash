@@ -12,6 +12,7 @@ const FileUpload = () => {
   const [uploadedFiles, setUploadedFiles] = useState([]);
   const [progress, setProgress] = useState(false);
   const [rowsData, setRowsData] = useState([]);
+  const [rowsDatas, setRowsDatas] = useState([]);
   const [colsData, setColsData] = useState([]);
 
   const [page, setPage] = useState(0);
@@ -39,7 +40,7 @@ const FileUpload = () => {
           return obj;
         });
 
-        console.log({ transform });
+        setRowsDatas(transform);
       }
     });
     const fileName =
@@ -87,7 +88,7 @@ const FileUpload = () => {
       .catch(console.error);
   };
 
-  console.log({ rowsData });
+  console.log({ rowsData, rowsDatas });
   // console.log({colsData})
   // const viewHeader = header.map((data, idx) => (
   //   console.log(data)
@@ -167,8 +168,8 @@ const FileUpload = () => {
         ))}
 
         <BaseTable
-          // rows={rows || []}
-          rows={rowsData || []}
+          rows={rowsDatas || []}
+          // rows={rowsData || []}
           columns={ExcelColumns}
           page={page}
           setPage={setPage}
