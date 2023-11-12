@@ -36,7 +36,7 @@ const SideNav = () => {
         })}
       </div>
 
-      <div className="container mt-[13rem] p-[10px_1px] w-[330px] ml-[20px] rounded-lg flex items-center text-[20px] space-x-4 bg-white shadow-[0px_4px_17px_4px_rgba(0,0,0,0.10)]">
+      <div className="container mt-[13rem] p-[10px_1px] w-[330px] ml-[20px] rounded-lg flex items-center text-[20px] space-x-4 bg-white shadow-[0px_4px_17px_4px_rgba(0,0,0,0.10)] cursor-pointer">
         <div className="ml-6 bg-black p-[10px] rounded-lg"><LogoutIcon /></div>
         <div>Logout</div>
       </div>

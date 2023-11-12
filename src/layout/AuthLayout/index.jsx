@@ -1,18 +1,15 @@
-import { useState } from "react";
-import { ReactComponent as EyeOpenIcon } from "../../assets/svg/eye-open.svg";
-import { ReactComponent as EyeClosedIcon } from "../../assets/svg/eye-closed.svg";
-import InputField from "../../components/InputField/InputField";
+import { Link } from "react-router-dom";
+import { useEffect } from "react";
+import { Outlet, useLocation, useNavigate } from "react-router-dom";
 import Logo from "../../assets/img/logo2.png";
 import BackgroundImage from "../../assets/img/statment_bg.png";
-import BaseButton from "../../components/Button/BaseButton";
 import Grid from "@mui/material/Grid";
 
 const AuthLayout = () => {
-  const [showPassword, setShowPassword] = useState(false);
+  const navigate = useNavigate();
+  const { pathname } = useLocation();
 
-  const handleEyeOpenEyeClose = () => {
-    setShowPassword(!showPassword);
-  };
+  
 
   return (
     <>
@@ -31,39 +28,7 @@ const AuthLayout = () => {
                 Bulk Lien / UnLien Portal
               </h1>
             </section>
-            <section>
-              <p className="text-lg text-black font-light">
-                Enter your Ad credentials to sign in
-              </p>
-            </section>
-            <section>
-              <InputField label="Username" type="text" placeholder="Username" />
-            </section>
-            <section>
-              <InputField
-                label="Password"
-                type={showPassword ? "text" : "password"}
-                placeholder="*****"
-                appendIcon={
-                  showPassword ? (
-                    <EyeOpenIcon
-                      className="absolute right-2 cursor-pointer w-5 h-5 select-none"
-                      onClick={handleEyeOpenEyeClose}
-                    />
-                  ) : (
-                    <EyeClosedIcon
-                      className="absolute right-2 cursor-pointer w-5 h-5 select-none"
-                      onClick={handleEyeOpenEyeClose}
-                    />
-                  )
-                }
-              />
-            </section>
-            <section>
-              <BaseButton type="submit" customStyle="w-full" variant="gradient">
-                Sign In
-              </BaseButton>
-            </section>
+           <Outlet />
           </div>
         </Grid>
         <Grid item xs={6}>

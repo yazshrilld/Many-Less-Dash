@@ -29,15 +29,15 @@ export const navigation = (role) => [
       },
       {
         label: "Pending Lien",
-        href: "/app/bulk-lien/approved-lien",
+        href: "/app/bulk-lien/pending-lien",
       },
       {
         label: "Declined Lien",
-        href: "/app/bulk-lien/approved-lien",
+        href: "/app/bulk-lien/declined-lien",
       },
       {
         label: "Failed Lien",
-        href: "/app/bulk-lien/approved-lien",
+        href: "/app/bulk-lien/failed-lien",
       },
     ],
   },
@@ -49,23 +49,23 @@ export const navigation = (role) => [
     dropdown: [
       {
         label: "Upload UnLien",
-        href: "/app/bulk-unlien",
+        href: "/app/bulk-unlien/upload-unlien",
       },
       {
         label: "Approved UnLien",
-        href: "/app/bulk-unlien/approved-lien",
+        href: "/app/bulk-unlien/approved-unlien",
       },
       {
         label: "Pending UnLien",
-        href: "/app/bulk-unlien/pending-lien",
+        href: "/app/bulk-unlien/pending-unlien",
       },
       {
         label: "Declined UnLien",
-        href: "/app/bulk-unlien/declined-lien",
+        href: "/app/bulk-unlien/declined-unlien",
       },
       {
         label: "Failed UnLien",
-        href: "/app/bulk-unlien/failed-lien",
+        href: "/app/bulk-unlien/failed-unlien",
       },
     ],
   },
@@ -103,8 +103,26 @@ export const DUMMY_DATA_APPROVED = {
   status: "APPROVED",
   code: 11,
 };
+export const DUMMY_DATA_APPROVED_UN = {
+  reference: 1100924,
+  name: "Musa Yazid",
+  account: 3291233455,
+  lien_amount: 800,
+  debit_amount: 4,
+  status: "APPROVED",
+  code: 11,
+};
 
 export const DUMMY_DATA_DECLINED = {
+  reference: 1100924,
+  name: "Musa Yazid",
+  account: 3291233455,
+  lien_amount: 800,
+  debit_amount: 4,
+  status: "DECLINED",
+  code: 11,
+};
+export const DUMMY_DATA_DECLINED_UN = {
   reference: 1100924,
   name: "Musa Yazid",
   account: 3291233455,
@@ -123,8 +141,26 @@ export const DUMMY_DATA_PENDING = {
   status: "PENDING",
   code: 11,
 };
+export const DUMMY_DATA_PENDING_UN = {
+  reference: 1100924,
+  name: "Musa Yazid",
+  account: 3291233455,
+  lien_amount: 800,
+  debit_amount: 4,
+  status: "PENDING",
+  code: 11,
+};
 
 export const DUMMY_DATA_FAILED = {
+  reference: 1100924,
+  name: "Musa Yazid",
+  account: 3291233455,
+  lien_amount: 800,
+  debit_amount: 4,
+  status: "FAILED",
+  code: 11,
+};
+export const DUMMY_DATA_FAILED_UN = {
   reference: 1100924,
   name: "Musa Yazid",
   account: 3291233455,
@@ -176,17 +212,23 @@ export const ColumnHeaders = [
   {
     id: "debit_amount",
     label: "Debit Amount",
-    minWidth: 90,
+    minWidth: 50,
   },
   {
     id: "status",
     label: "Status",
-    minWidth: 50,
+    minWidth: 90,
     format: (val) => (
       <p
         className={`${
           val.toUpperCase() === "APPROVED"
-            ? "text-[#009E19] bg-green-200 p-1 rounded-[60px]"
+            ? "text-[#009E19] bg-green-200 px-2 py-[5px] rounded-[60px] text-center"
+            : val === "DECLINED"
+            ? "text-pink-500 bg-pink-200 px-2 py-[5px] rounded-[60px] text-center"
+            : val === "PENDING"
+            ? "text-orange-500 bg-orange-200 px-2 py-[5px] rounded-[60px] text-center"
+            : val === "FAILED"
+            ? "text-red-500 bg-red-200 px-2 py-[5px] rounded-[60px] text-center"
             : "text-[#000000]"
         } capitalize`}
       >

@@ -1,15 +1,16 @@
 import FileUpload from "../../components/FileUpload/FileUpload";
 import BaseButton from "../../components/Button/BaseButton";
-const UploadLien = () => {
+
+const UploadUnLien = () => {
   return (
     <>
       <div className="container">
         <p className="relative text-3xl font-medium text-center">
-          Bulk Lien Upload
+          Bulk UnLien Upload
         </p>
         <form>
-          <section className="">
-            <div className="">
+          <section>
+            <div>
               <FileUpload />
               {/* <div className="w-0.5/5 absolute top-[15%] right-20">
               <div
@@ -34,4 +35,4 @@ const UploadLien = () => {
   );
 };
 
-export default UploadLien;
+export default UploadUnLien;

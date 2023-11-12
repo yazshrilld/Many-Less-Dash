@@ -1,9 +1,9 @@
 import BaseTable from "../../components/BaseTable";
-import { DUMMY_DATA_APPROVED, ColumnHeaders } from "../../assets/data/data";
+import { DUMMY_DATA_DECLINED_UN, ColumnHeaders } from "../../assets/data/data";
 import { useState } from "react";
 
-const Approved = () => {
-  const data = DUMMY_DATA_APPROVED;
+const DeclinedUn = () => {
+  const data = DUMMY_DATA_DECLINED_UN;
   const columnHeaders = ColumnHeaders;
 
   const rowsData = [...Array(25).keys()].map(() => data);
@@ -12,7 +12,7 @@ const Approved = () => {
   return (
     <>
       <div className="text-black space-y-10">
-        <div>Approved Lien</div>
+        <div>Declined Un-Lien</div>
         <BaseTable
           rows={rowsData || []}
           columns={columnHeaders}
@@ -26,4 +26,4 @@ const Approved = () => {
   );
 };
 
-export default Approved;
+export default DeclinedUn;

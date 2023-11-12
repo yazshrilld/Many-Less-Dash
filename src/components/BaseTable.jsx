@@ -77,10 +77,12 @@ const BaseTable = ({
                   >
                     {columns?.map((cols, idx) => {
                       const seenas = cols;
-                      const check = row[cols?.id.toLowerCase()]
+                      const check = row[cols?.id.toLowerCase()];
                       return (
                         <TableCell key={cols.ld} style={{ fontSize: "0.8rem" }}>
-                          <span>{check}</span>
+                          <span>
+                            {cols.format ? cols.format(check, row) : check}
+                          </span>
                         </TableCell>
                       );
                     })}
