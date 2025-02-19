@@ -262,7 +262,7 @@ export const ExcelColumns = [
     id: "CHARGES",
     label: "Charges",
     minWidth: 50,
-    format: (val) => <p>{val < 300 ? `text-red-300` : `text-green-300`}</p>,
+    format: (val) => <p className={`${val < 300 ? "text-red-300" : "text-green-300"}`}>{val}</p>,
   },
 ];
 
